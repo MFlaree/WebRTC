@@ -5,10 +5,6 @@ import Chat from './comps/chat/Chat';
 import VideoChat from './comps/videochat/VideoChat';
 
 function App() {
- 
-  socket.on('connection',() => {
-    console.log("connected");
-  })
 
   return (
     <main>
