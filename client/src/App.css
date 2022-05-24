@@ -1,0 +1,25 @@
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
+
+.container {
+    padding: 1%;
+    max-width: 1024px;
+    margin: 0 auto;
+    grid-gap: 1rem;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-areas: "header" "nav" "main" "footer";
+}

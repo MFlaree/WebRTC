@@ -1,0 +1,45 @@
+.Mensajes > p > label {
+    padding-right: 5px;
+    font-size: 1.15em;  
+}
+
+.Mensajes input {
+    background-color: #f6f6eb;
+    padding: 10px 15px 10px 9px;
+    border: solid 1px #808080;
+    
+}
+
+.Mensajes input:focus {
+    border: solid 1px #474747;
+    background-color: #ffffEE;
+    outline: none;
+}
+
+.Mensajes input#msg {
+    background-color: #ffffff;
+    padding: 14.8px 25px 15px 15px;
+    border: solid 1px #808080;
+}
+
+.Mensajes input#msg:focus {
+    background-color: #ffffff;
+    padding: 14.8px 25px 15px 15px;
+    border: solid 1px #808080;
+    outline: none;
+}
+
+.Mensajes > p > button {
+    background-color: #381fd1;
+    color: white;
+    padding: 11px 25px;
+    font-size: 1.15em;
+    border: 1px solid #212121;
+    margin-left: 5px;
+    transform: translateY(1.8px);
+}
+
+.Mensajes > p > button:hover {
+    cursor: pointer;
+    background-color: #1d0a97;
+}
