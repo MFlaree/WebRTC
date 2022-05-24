@@ -19,12 +19,12 @@ function Video() {
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
           canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-          socket.emit("videochat","AYAYA");
+          socket.emit("videochat", "AYAYA");
         }, 40);
       } else {
-        if (video.srcObject !== null) {     //Condición para que no salte un error en la inicialización.
+        if (video.srcObject !== null) { //Condición para que no salte un error en la inicialización.
           video.srcObject.getTracks()[0].stop();
-          clearInterval(interval);    // !Que esta función funcione.
+          clearInterval(interval); // !Que esta función funcione.
         }
       }
     }
@@ -37,7 +37,9 @@ function Video() {
 
   return (
     <section className="VideoChat">
-      <button onClick={() => setStreamState(!streamState)}>Start Broadcasting</button>
+      <button onClick={() => setStreamState(!streamState)}>
+        {streamState ? "Start Broadcasting" : "Stop Broadcasting"}
+      </button>
       <br />
       <video id="video" autoPlay></video>
       <canvas id="canvas"></canvas>

@@ -1,4 +1,4 @@
-.Mensajes > p > label {
+.Mensajes > form > p > label {
     padding-right: 5px;
     font-size: 1.15em;  
 }
@@ -7,7 +7,6 @@
     background-color: #f6f6eb;
     padding: 10px 15px 10px 9px;
     border: solid 1px #808080;
-    
 }
 
 .Mensajes input:focus {
@@ -29,7 +28,7 @@
     outline: none;
 }
 
-.Mensajes > p > button {
+.Mensajes > form > p > input[type=submit] {
     background-color: #381fd1;
     color: white;
     padding: 11px 25px;
@@ -39,7 +38,7 @@
     transform: translateY(1.8px);
 }
 
-.Mensajes > p > button:hover {
+.Mensajes > form > p > input[type=submit]:hover {
     cursor: pointer;
     background-color: #1d0a97;
 }
