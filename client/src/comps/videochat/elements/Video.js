@@ -16,19 +16,18 @@ function Video() {
 
       if (streamState) {
         video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });
-
         setIntervalID(
           setInterval(() => {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
-            canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+    //        canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
             socket.emit("videochat", canvas.toDataURL());
           }, 500)
         );
       } else {
         if (video.srcObject !== null) {
           //Condición para que no salte un error en la inicialización.
-          video.srcObject.getTracks()[0].stop();
+          video.srcObject.getTracks()[0].stop();   
           setIntervalID(clearInterval(intervalID)); // !Que esta función funcione.
         }
       }
