@@ -20,8 +20,8 @@ io.on("connection", (socket) => {
   });
 
   socket.on("chat",(arg) => {
-    console.log("   - chat: "+arg);
-    socket.emit("chat",arg);
+    console.log("   - chat new refresh ");
+    socket.broadcast.emit("chat",arg); //este emit no es para todos
   });
 });
 

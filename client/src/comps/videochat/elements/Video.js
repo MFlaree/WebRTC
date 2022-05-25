@@ -38,7 +38,7 @@ function Video() {
   return (
     <section className="VideoChat">
       <button onClick={() => setStreamState(!streamState)}>
-        {streamState ? "Start Broadcasting" : "Stop Broadcasting"}
+        {streamState ? "Stop Broadcasting" : "Start Broadcasting"}
       </button>
       <br />
       <video id="video" autoPlay></video>
