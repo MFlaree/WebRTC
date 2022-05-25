@@ -17,7 +17,7 @@ io.on("connection", (socket) => {
 
   socket.on("videochat",(arg) => {
     console.log("   - videochat new refresh ");
-    socket.emit("videochat",arg);
+    socket.broadcast.emit("videochat",arg);
   });
 
   socket.on("chat",(arg) => {
