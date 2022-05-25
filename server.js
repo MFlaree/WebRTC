@@ -16,12 +16,13 @@ io.on("connection", (socket) => {
   console.log("  - Connected: "+socket.id);
 
   socket.on("videochat",(arg) => {
-    console.log("   - videochat: "+arg);
+    console.log("   - videochat new refresh ");
+    socket.emit("videochat",arg);
   });
 
   socket.on("chat",(arg) => {
     console.log("   - chat new refresh ");
-    socket.broadcast.emit("chat",arg); //este emit no es para todos
+    socket.emit("chat",arg); //este emit no es para todos
   });
 });
 

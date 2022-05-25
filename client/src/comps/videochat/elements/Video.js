@@ -6,25 +6,28 @@ const socket = io(WEB);
 
 function Video() {
   const [streamState, setStreamState] = useState(false);
+  const [intervalID, setIntervalID] = useState(false);
+  const [img, setImg] = useState(false);
 
   useEffect(() => {
     async function callback() {
       const video = document.getElementById("video");
       const canvas = document.getElementById("canvas");
-      let interval;
+      
       if (streamState) {
         video.srcObject = await navigator.mediaDevices.getUserMedia({ video: true });
-        // !Cambiar dibujar por enviar imagen al servidor
-        interval = setInterval(() => {
+        setIntervalID(setInterval(() => {
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
           canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-          socket.emit("videochat", "AYAYA");
-        }, 40);
+
+          socket.emit("videochat", canvas.toDataURL());
+
+        }, 40));
       } else {
         if (video.srcObject !== null) { //Condición para que no salte un error en la inicialización.
           video.srcObject.getTracks()[0].stop();
-          clearInterval(interval); // !Que esta función funcione.
+          setIntervalID( clearInterval(intervalID)); // !Que esta función funcione.
         }
       }
     }
@@ -35,6 +38,10 @@ function Video() {
     }
   }, [streamState]);
 
+  socket.on("videochat",(arg) => {
+    setImg(arg);    
+  })
+
   return (
     <section className="VideoChat">
       <button onClick={() => setStreamState(!streamState)}>
@@ -42,7 +49,8 @@ function Video() {
       </button>
       <br />
       <video id="video" autoPlay></video>
-      <canvas id="canvas"></canvas>
+      <canvas hidden id="canvas"></canvas>
+      {img !== false ? <img id="image" src={img}/> : ""}
     </section>
   );
 }

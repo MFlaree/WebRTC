@@ -20,7 +20,6 @@ function Mensajes() {
 
   socket.on("chat",(arg) => {
     setSocketMsg(arg);    
-    console.log(msg);
   })
 
   return (

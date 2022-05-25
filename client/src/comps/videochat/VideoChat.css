@@ -16,7 +16,7 @@ section > *{
     background-color: #1d0a97;
 }
 
-video#video, canvas#canvas{
+video#video, canvas#canvas, img#image{
     width: 640px;
     height: 480px;
     background-color: black;
