@@ -42,3 +42,18 @@
     cursor: pointer;
     background-color: #1d0a97;
 }
+
+.Mensajes div#caja {
+    height: 200px;
+    border: black solid 1px;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.Mensajes div#caja > p.message:first-child {
+    margin-top: 5px;
+}
+
+.Mensajes div#caja > p.message:last-child {
+    margin-bottom: 5px;
+}

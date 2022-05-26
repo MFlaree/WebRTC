@@ -12,10 +12,13 @@ function Mensajes() {
     socket.emit("chat", msg );
   }, [msg]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e) { 
     e.preventDefault();
-    setMsg([...msg, {usr: document.getElementById("user").value, msg: document.getElementById("msg").value } ])
-    //console.log(msg);
+    const user = document.getElementById("user").value;
+    const message =  document.getElementById("msg").value
+    if (!(user.trim() === "" || message.trim() === "")) {
+      setMsg([...msg, {usr: user, msg: message} ])
+    }
   }
 
   socket.on("chat-broadcast",(arg) => {
@@ -31,8 +34,10 @@ function Mensajes() {
         </p>
         <div id="caja">
           {socketmsg && socketmsg.map(e => {
+            const caja = document.getElementById('caja');
+            caja.scrollTop = caja.scrollHeight - caja.clientHeight;  //Mantiene el scrollbar en la parte inferior.
             return (
-              <p key={e.msg}><b>{e.usr+": "}</b>{e.msg}</p>
+              <p className="message" key={e.msg+"-"+socketmsg.indexOf(e)}><b>{e.usr+": "}</b>{e.msg}</p>
             )
           })}
         </div>
