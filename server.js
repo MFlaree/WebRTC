@@ -17,12 +17,12 @@ io.on("connection", (socket) => {
 
   socket.on("videochat",(arg) => {
     console.log("   - videochat new refresh ");
-    socket.broadcast.emit("videochat",arg);
+    socket.broadcast.emit("videochat-broadcast",arg);
   });
 
   socket.on("chat",(arg) => {
     console.log("   - chat new refresh ");
-    socket.emit("chat",arg); //este emit no es para todos
+    socket.broadcast.emit("chat-broadcast",arg); 
   });
 });
 

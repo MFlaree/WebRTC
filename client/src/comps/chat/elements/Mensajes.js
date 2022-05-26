@@ -18,7 +18,7 @@ function Mensajes() {
     //console.log(msg);
   }
 
-  socket.on("chat",(arg) => {
+  socket.on("chat-broadcast",(arg) => {
     setSocketMsg(arg);    
   })
 
