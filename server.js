@@ -18,10 +18,10 @@ io.on("connection", (socket) => {
   socket.on("videochat",(arg) => {
     console.log("   - videochat new refresh ");
     socket.broadcast.emit("videochat-broadcast",arg);
-  });
+  }); 
 
   socket.on("chat",(arg) => {
-    console.log("   - chat new refresh ");
+    console.log("   - chat new refresh, chat messages = "+arg.length);
     socket.broadcast.emit("chat-broadcast",arg); 
   });
 });

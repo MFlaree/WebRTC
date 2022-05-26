@@ -6,24 +6,24 @@ const socket = io(WEB);
 
 function Mensajes() {
   const [msg, setMsg] = useState([]);
-  const [socketmsg, setSocketMsg] = useState([])
+  const [socketmsg, setSocketMsg] = useState([]);
 
   useEffect(() => {
-    socket.emit("chat", msg );
-  }, [msg]);
+    socket.emit("chat", msg);
+  }, [msg]); 
 
-  function handleSubmit(e) { 
+  function handleSubmit(e) {
     e.preventDefault();
     const user = document.getElementById("user").value;
-    const message =  document.getElementById("msg").value
+    const message = document.getElementById("msg").value;
     if (!(user.trim() === "" || message.trim() === "")) {
-      setMsg([...msg, {usr: user, msg: message} ])
+      setMsg([...socketmsg, { usr: user, msg: message }]);
     }
-  }
+  } 
 
-  socket.on("chat-broadcast",(arg) => {
-    setSocketMsg(arg);    
-  })
+  socket.on("chat-broadcast", (arg) => {
+    setSocketMsg(arg);
+  });
 
   return (
     <section className="Mensajes">
@@ -33,13 +33,17 @@ function Mensajes() {
           <input id="user" type="text" />
         </p>
         <div id="caja">
-          {socketmsg && socketmsg.map(e => {
-            const caja = document.getElementById('caja');
-            caja.scrollTop = caja.scrollHeight - caja.clientHeight;  //Mantiene el scrollbar en la parte inferior.
-            return (
-              <p className="message" key={e.msg+"-"+socketmsg.indexOf(e)}><b>{e.usr+": "}</b>{e.msg}</p>
-            )
-          })}
+          {socketmsg &&
+            [...socketmsg].map((e) => {
+              const caja = document.getElementById("caja");
+              caja.scrollTop = caja.scrollHeight - caja.clientHeight; //Mantiene el scrollbar en la parte inferior de la caja.
+              return (
+                <p className="message" key={e.msg + "-" + socketmsg.indexOf(e)}>
+                  <b>{e.usr + ": "}</b>
+                  {e.msg}
+                </p> 
+              );
+            })}
         </div>
         <p>
           <input id="msg" type="text" placeholder="Enter message" />
