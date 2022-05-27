@@ -23,6 +23,7 @@ io.on("connection", (socket) => {
   socket.on("chat",(arg) => {
     console.log("   - chat new refresh, chat messages = "+arg.length);
     socket.broadcast.emit("chat-broadcast", arg ); 
+    socket.emit("chat-broadcast", arg );
   });
 });
 

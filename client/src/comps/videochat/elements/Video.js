@@ -22,7 +22,7 @@ function Video() {
             canvas.height = video.videoHeight;
             canvas.getContext("2d").drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
             socket.emit("videochat", canvas.toDataURL());
-          }, 500)
+          }, 400)
         );
       } else {
         //Condición para que no salte un error en la inicialización.
